@@ -16,12 +16,16 @@ The goal of this lab is to establish an isolated, reproducible Python environmen
   - Memory usage: Peak Resident Set Size (RSS) captured via `psutil`.
 
 ## 3. Results
-All generated outputs and metrics were successfully computed and stored in `lab01/results/`:
-- `versions.txt`: Full environment package versions.
-- `baseline_accuracy.csv`: Evaluation accuracy scores.
-- `logisticregression_model.joblib` and `randomforest_model.joblib`: Serialized model artifacts.
+
+| Metric | Logistic Regression | Random Forest |
+| :--- | :--- | :--- |
+| **Test Accuracy** | 0.9415 | 0.9357 |
+| **Training Time (sec)** | 0.05529 | 0.07207 |
+| **Single-Sample Latency (ms)** | 0.0640 | 2.4543 |
+| **Model Size (KB)** | 1.08 | 284.10 |
+| **Peak RAM (MB)** | 181.17 | 182.83 |
 
 ## 4. Conclusions
-1. Both models achieve strong test accuracy, but Logistic Regression offers faster execution and lower memory usage compared to Random Forest.
-2. Both models satisfy resource budgets for Cloud, Edge, and Mobile deployment tiers.
-3. Standard Random Forest ensembles exceed the strict hardware limits of TinyML devices ($\le 256\text{ KB}$ RAM, $\le 100\text{ KB}$ flash storage).
+1. Both models achieve strong test accuracy, but Logistic Regression offers substantially faster execution and lower model storage footprint compared to Random Forest.
+2. Both models easily satisfy resource budgets for Cloud, Edge, and Mobile deployment tiers.
+3. Standard Random Forest ensembles exceed the strict hardware limits of TinyML devices ($\le 256\text{ KB}$ RAM, $\le 100\text{ KB}$ flash storage) due to model size (284.10 KB).
